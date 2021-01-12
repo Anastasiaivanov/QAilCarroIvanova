@@ -7,42 +7,60 @@ import org.testng.annotations.Test;
 
 public class CreateAccountTest extends TestBase {
     // preconditions: user should be legged out
-    //click on signUp button
-    //fill registration form
-    //click submit button
-    //check login form displayed
     @BeforeMethod
-    public void ensurePreconditions(){
-        if(!isElementPresent(By.cssSelector("[href='/signup']"))){
-            wd.findElement(By.xpath("a[contains(.,'logOut')]")).click();
-            //sign up not present->click on logout form
+    public void ensurePreconditions() {
+        if (!isSignUpTabPresentInHeader()) {//sign up not present
+            logOut();
+        }
             //a[contains(.,'logOut')]
             // [href='/signup']
         }
-    }
+
     @Test
-    public void testSignUp(){
-        wd.findElement(By.cssSelector("[href='/signup']")).click();
-
+    public void testSignUp() {
+        //click on signUp button
+        click(By.cssSelector("[href='/signup']"));
         Assert.assertTrue(isElementPresent(By.cssSelector("form.signup__fields")));
+        //fill registration form
+        fillRegistrationForm(new User()
+                .setFirstName("Nastya3")
+                .setSecondName("Ivanova1")
+                .setEmail("null@mail.ru")
+                .setPassword("qwertyuI78"));
 
-        wd.findElement(By.cssSelector("#first_name")).click();
-        wd.findElement(By.cssSelector("#first_name")).clear();
-        wd.findElement(By.cssSelector("#first_name")).sendKeys("Nastya");
-
-        wd.findElement(By.cssSelector("#second_name")).click();
-        wd.findElement(By.cssSelector("#second_name")).clear();
-        wd.findElement(By.cssSelector("#second_name")).sendKeys("Ivanova");
-
-        wd.findElement(By.cssSelector("#email")).click();
-        wd.findElement(By.cssSelector("#email")).clear();
-        wd.findElement(By.cssSelector("#email")).sendKeys("ni@mail.ru");
-
-        wd.findElement(By.cssSelector("#password")).click();
-        wd.findElement(By.cssSelector("#password")).clear();
-        wd.findElement(By.cssSelector("#password")).sendKeys("12345678NI");
-
-        wd.findElement(By.cssSelector("#check_policy")).click();
-
+        click(By.cssSelector("#check_policy"));
+        //click submit button
+        submitForm();
+        //check login form displayed
+        Assert.assertTrue(isLoginFormPresent());
+        //Assert.assertTrue(isElementPresent(By.cssSelector(".Login_login__right_block__1niYm")));
     }
+
+    @Test
+    public void testSignUpWithoutPassword() throws InterruptedException {
+        //click on signUp button
+        click(By.cssSelector("[href='/signup']"));
+        Assert.assertTrue(isElementPresent(By.cssSelector("form.signup__fields")));
+        //fill registration form
+        fillRegistrationForm(new User()
+                .setFirstName("Neu1")
+                .setSecondName("Neu1")
+                .setEmail("niks12345@mail.ru"));
+
+        click(By.cssSelector("#check_policy"));
+        //Thread.sleep(2000);
+        //click submit button
+        submitForm();
+        //check login form displayed
+        Assert.assertTrue(isLoginFormPresent());
+        //Assert.assertTrue(isElementPresent(By.cssSelector(".Login_login__right_block__1niYm")));
+    }
+
+    public void fillRegistrationForm(User user) {
+        type(By.name("first_name"), user.getFirstName());
+        type(By.name("second_name"), user.getSecondName());
+        type(By.name("email"), user.getEmail());
+        type(By.name("password"), user.getPassword());
+    }
+
 }

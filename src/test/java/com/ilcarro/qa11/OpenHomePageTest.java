@@ -16,8 +16,8 @@ public class OpenHomePageTest extends TestBase{
     public void homePageTest() {
         System.out.println("Open site");
         //System.out.println("FindCarFromPresent: " + isFindCarFromPresent1());
-        System.out.println("FindCarFromPresent: " + isFindCarFromPresent2());
-        isFindCarFromPresent2();
+        System.out.println("FindCarFromPresent: " + isFindCarFromPresent1());
+        isFindCarFromPresent2(By.cssSelector(".Main_mainpage__find_your_car__AHLkw form"));
     }
 
 }
