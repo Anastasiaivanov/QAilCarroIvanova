@@ -49,6 +49,6 @@ public class HelperBase {
     }
 
     public void jumpToFooter(){
-        wd.findElement(By.cssSelector("body")).sendKeys(Keys.COMMAND,Keys.DOWN);
+        wd.findElement(By.cssSelector("body")).sendKeys(Keys.END);
     }
 }

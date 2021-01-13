@@ -20,11 +20,11 @@ public class FooterHelper extends HelperBase{
         click(By.cssSelector("[href='/terms']"));
     }
 
-    public void openTopCitiesNewYorkFromFooter(){
-        click(By.xpath("//a[contains(text(),'New York')]"));
+    public void openTopCityFromFooter(By locator){
+        click(locator);
     }
 
-    public void openFacebookFromFooter(){
-        click(By.cssSelector(".facebook"));
+    public void openSocialMediaFromFooter(By locator){
+        click(locator);
     }
 }
