@@ -1,0 +1,15 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<suite name="Regression" verbose="1">
+    <test name="Regression">
+        <classes>
+            <class name="com.ilcarro.qa11.test.AddCarTest">
+                <methods>
+                    <exclude name="negativeTestWithoutDoors"/>
+                    <exclude name=".*negative.*"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+
+</suite>

@@ -1,0 +1,14 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<suite name="UserTests" verbose="1">
+    <test name="Regression">
+        <classes>
+            <class name="com.ilcarro.qa11.test.CreateAccountTest">
+                <methods>
+                    <exclude name="testSignUpWithoutPassword.*"></exclude>
+                </methods>
+            </class>
+        </classes>
+    </test>
+
+</suite>
