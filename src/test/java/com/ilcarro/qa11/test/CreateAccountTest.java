@@ -16,32 +16,6 @@ import java.util.List;
 
 public class CreateAccountTest extends TestBase {
 
-    @DataProvider
-    public Iterator<Object[]> validUser() {
-        List<Object[]> list = new ArrayList<>();
-        list.add(new Object[]{"aName", "bName", "aName4@mail.com", "Abcde1234ana"});
-        list.add(new Object[]{"cName", "dName", "bName5@mail.com", "Abcde1235ana"});
-        list.add(new Object[]{"eName", "fName", "cName6@mail.com", "Abcde1236ana"});
-        return list.iterator();
-
-    }
-
-    @DataProvider
-    public Iterator<Object[]> validUserFromCSV() throws IOException {
-        List<Object[]> list = new ArrayList<>();
-
-        BufferedReader reader =
-                new BufferedReader(new FileReader("src/test/resources/NewUser.csv"));
-        String line = reader.readLine();
-
-        while (line != null) {
-            String[] split = line.split(",");
-            list.add(new Object[]{new User().setFirstName(split[0]).setSecondName(split[1]).setEmail(split[2]).setPassword(split[3])});
-            line = reader.readLine();
-        }
-            return list.iterator();
-    }
-
     // preconditions: user should be legged out
     @BeforeMethod
     public void ensurePreconditions() {
@@ -73,7 +47,7 @@ public class CreateAccountTest extends TestBase {
         //Assert.assertTrue(isElementPresent(By.cssSelector(".Login_login__right_block__1niYm")));
     }
 
-    @Test(dataProvider = "validUser")
+    @Test(dataProvider = "validUser", dataProviderClass = DataProviders.class)
     public void testSignUpFromDataProvider(String aName, String bName, String email, String password) {
 
         //click on signUp button
@@ -94,7 +68,7 @@ public class CreateAccountTest extends TestBase {
         Assert.assertTrue(app.getUser().isLoginFormPresent());
         //Assert.assertTrue(isElementPresent(By.cssSelector(".Login_login__right_block__1niYm")));
     }
-    @Test(dataProvider = "validUserFromCSV")
+    @Test(dataProvider = "validUserFromCSV", dataProviderClass = DataProviders.class)
     public void testSignUpFromSCVFromDataProvider(User user) {
 
         //click on signUp button

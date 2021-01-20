@@ -3,24 +3,24 @@ package com.ilcarro.qa11.model;
 public class Car {
     private String country;
     private String address;
-    private double distance;
+    private String distance;
     private String serialNumber;
     private String brand;
     private String model;
-    private int year;
+    private String year;
     private String engine;
-    private double fuelConsumption;
+    private String fuelConsumption;
     private String fuel;
     private String transmission;
     private String wd;
-    private double horsePower;
-    private int torque;
-    private int doors;
-    private int seats;
+    private String horsePower;
+    private String torque;
+    private String doors;
+    private String seats;
     private String classCar;
     private String about;
     private String features;
-    private double pricePerDay;
+    private String pricePerDay;
 
     public String getCountry() {
         return country;
@@ -30,7 +30,7 @@ public class Car {
         return address;
     }
 
-    public double getDistance() {
+    public String getDistance() {
         return distance;
     }
 
@@ -46,7 +46,7 @@ public class Car {
         return model;
     }
 
-    public int getYear() {
+    public String getYear() {
         return year;
     }
 
@@ -54,7 +54,7 @@ public class Car {
         return engine;
     }
 
-    public double getFuelConsumption() {
+    public String getFuelConsumption() {
         return fuelConsumption;
     }
 
@@ -70,19 +70,19 @@ public class Car {
         return wd;
     }
 
-    public double getHorsePower() {
+    public String getHorsePower() {
         return horsePower;
     }
 
-    public int getTorque() {
+    public String getTorque() {
         return torque;
     }
 
-    public int getDoors() {
+    public String getDoors() {
         return doors;
     }
 
-    public int getSeats() {
+    public String getSeats() {
         return seats;
     }
 
@@ -98,7 +98,7 @@ public class Car {
         return features;
     }
 
-    public double getPricePerDay() {
+    public String getPricePerDay() {
         return pricePerDay;
     }
 
@@ -112,7 +112,7 @@ public class Car {
         return this;
     }
 
-    public Car setDistance(double distance) {
+    public Car setDistance(String distance) {
         this.distance = distance;
         return this;
     }
@@ -132,7 +132,7 @@ public class Car {
         return this;
     }
 
-    public Car setYear(int year) {
+    public Car setYear(String year) {
         this.year = year;
         return this;
     }
@@ -142,7 +142,7 @@ public class Car {
         return this;
     }
 
-    public Car setFuelConsumption(double fuelConsumption) {
+    public Car setFuelConsumption(String fuelConsumption) {
         this.fuelConsumption = fuelConsumption;
         return this;
     }
@@ -162,22 +162,22 @@ public class Car {
         return this;
     }
 
-    public Car setHorsePower(double horsePower) {
+    public Car setHorsePower(String horsePower) {
         this.horsePower = horsePower;
         return this;
     }
 
-    public Car setTorque(int torque) {
+    public Car setTorque(String torque) {
         this.torque = torque;
         return this;
     }
 
-    public Car setDoors(int doors) {
+    public Car setDoors(String doors) {
         this.doors = doors;
         return this;
     }
 
-    public Car setSeats(int seats) {
+    public Car setSeats(String seats) {
         this.seats = seats;
         return this;
     }
@@ -197,8 +197,19 @@ public class Car {
         return this;
     }
 
-    public Car setPricePerDay(double pricePerDay) {
+    public Car setPricePerDay(String pricePerDay) {
         this.pricePerDay = pricePerDay;
         return this;
+    }
+
+    @Override
+    public String toString() {
+        return "Car{" +
+                "serialNumber='" + serialNumber + '\'' +
+                ", brand='" + brand + '\'' +
+                ", model='" + model + '\'' +
+                ", year='" + year + '\'' +
+                ", pricePerDay=" + pricePerDay +
+                '}';
     }
 }

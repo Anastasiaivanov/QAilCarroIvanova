@@ -1,12 +1,11 @@
 package com.ilcarro.qa11.framework;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
+import com.google.common.io.Files;
+import org.openqa.selenium.*;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.NoSuchElementException;
-import java.util.concurrent.TimeUnit;
 
 public class HelperBase {
     WebDriver wd;
@@ -29,7 +28,7 @@ public class HelperBase {
     }
 
     public void type(By locator, String text) {
-        if(text!=null){
+        if (text != null) {
             click(locator);
             wd.findElement(locator).clear();
             wd.findElement(locator).sendKeys(text);
@@ -48,7 +47,19 @@ public class HelperBase {
         Thread.sleep(millis);
     }
 
-    public void jumpToFooter(){
+    public void jumpToFooter() {
         wd.findElement(By.cssSelector("body")).sendKeys(Keys.END);
+    }
+
+    public String takeScreenshot() {
+        File tmp = ((TakesScreenshot) wd).getScreenshotAs(OutputType.FILE);
+        File screenshot = new File("screenshot" + System.currentTimeMillis() + ".png");
+
+        try {
+            Files.copy(tmp, screenshot);
+        }catch (IOException e){
+            e.printStackTrace();
+        }
+        return screenshot.getAbsolutePath();
     }
 }

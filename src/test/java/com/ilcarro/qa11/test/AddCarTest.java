@@ -14,24 +14,24 @@ public class AddCarTest extends TestBase {
     public void negativeTestWithoutDoors() {
         app.getHeader().openAddCarFormFromHeader();
         app.getCar().fillCarForm(new Car().setCountry("Germany")
-                .setAddress("Fridrichstrasse 41, 10115 Berlin")
-                .setDistance(500)
+                .setDistance("500")
                 .setSerialNumber("123-123-123")
                 .setBrand("BMW")
                 .setModel("X3")
-                .setYear(2010)
+                .setYear("2010")
                 .setEngine("CF.1234")
-                .setFuelConsumption(10)
+                .setFuelConsumption("10")
                 .setFuel("Diesel")
                 .setTransmission("back")
                 .setWd("RWD")
-                .setHorsePower(110)
-                .setTorque(123)
-                .setSeats(5)
+                .setHorsePower("110")
+                .setTorque("123")
+                .setDoors("5")
+                .setSeats("5")
                 .setClassCar("B")
                 .setAbout("Comfortable and speedy car")
                 .setFeatures("good")
-                .setPricePerDay(30));
+                .setPricePerDay("30"));
         app.getUser().submitForm();
     }
 
@@ -42,25 +42,33 @@ public class AddCarTest extends TestBase {
         }
         app.getHeader().openAddCarFormFromHeader();
         app.getCar().fillCarForm(new Car().setCountry("Germany")
-                .setAddress("Fridrichstrasse 41, 10115 Berlin")
-                .setDistance(500)
+                .setDistance("500")
                 .setSerialNumber("123-123-123")
                 .setBrand("BMW")
                 .setModel("X3")
-                .setYear(2010)
+                .setYear("2010")
                 .setEngine("CF.1234")
-                .setFuelConsumption(10)
+                .setFuelConsumption("10")
                 .setFuel("Diesel")
                 .setTransmission("back")
                 .setWd("RWD")
-                .setHorsePower(110)
-                .setTorque(123)
-                .setDoors(5)
-                .setSeats(5)
+                .setHorsePower("110")
+                .setTorque("123")
+                .setDoors("5")
+                .setSeats("5")
                 .setClassCar("B")
                 .setAbout("Comfortable and speedy car")
                 .setFeatures("good")
-                .setPricePerDay(30));
+                .setPricePerDay("30"));
+        app.getUser().submitForm();
+
+    }@Test(dataProvider = "validCarFromCSV", dataProviderClass = DataProviders.class)
+    public void testFormLetTheCarWorkForLoggedUserFromDataProvider(Car car) {
+        if (!app.getUser().userLoggedIn()) {
+            app.getUser().logIn();
+        }
+        app.getHeader().openAddCarFormFromHeader();
+        app.getCar().fillCarForm(car);
         app.getUser().submitForm();
     }
 
@@ -69,25 +77,24 @@ public class AddCarTest extends TestBase {
 
         app.getHeader().openAddCarFormFromHeader();
         app.getCar().fillCarForm(new Car().setCountry("Germany")
-                .setAddress("Fridrichstrasse 41, 10115 Berlin")
-                .setDistance(500)
+                .setDistance("500")
                 .setSerialNumber("123-123-123")
                 .setBrand("BMW")
                 .setModel("X3")
-                .setYear(2010)
+                .setYear("2010")
                 .setEngine("CF.1234")
-                .setFuelConsumption(10)
+                .setFuelConsumption("10")
                 .setFuel("Diesel")
                 .setTransmission("back")
                 .setWd("RWD")
-                .setHorsePower(110)
-                .setTorque(123)
-                .setDoors(5)
-                .setSeats(5)
+                .setHorsePower("110")
+                .setTorque("123")
+                .setDoors("5")
+                .setSeats("5")
                 .setClassCar("B")
                 .setAbout("Comfortable and speedy car")
                 .setFeatures("good")
-                .setPricePerDay(30));
+                .setPricePerDay("30"));
         app.getUser().submitForm();
     }
 }
