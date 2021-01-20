@@ -16,7 +16,7 @@ import java.util.List;
 
 public class CreateAccountTest extends TestBase {
 
-    // preconditions: user should be legged out
+    // preconditions: user should be logged out
     @BeforeMethod
     public void ensurePreconditions() {
         if (!app.getHeader().isSignUpTabPresentInHeader()) {//sign up not present

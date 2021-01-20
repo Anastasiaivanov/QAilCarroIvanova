@@ -10,7 +10,7 @@ public class AddCarTest extends TestBase {
     public void ensurePreconditions() {
     }
 
-    @Test
+    @Test(enabled = false)
     public void negativeTestWithoutDoors() {
         app.getHeader().openAddCarFormFromHeader();
         app.getCar().fillCarForm(new Car().setCountry("Germany")
@@ -72,7 +72,7 @@ public class AddCarTest extends TestBase {
         app.getUser().submitForm();
     }
 
-    @Test
+    @Test(enabled = false)
     public void testFormLetTheCarWorkForNotLoggedUser() {
 
         app.getHeader().openAddCarFormFromHeader();

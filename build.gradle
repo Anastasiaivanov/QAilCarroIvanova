@@ -30,3 +30,12 @@ task userTest(type:Test) {
         systemProperty 'browser', "${browser}"
     }
 }
+
+task openPageTest(type:Test) {
+    useTestNG{
+        suites 'src/test/resources/testing-OpenHomePage.xml'
+    }
+    if (project.hasProperty('browser')) {
+        systemProperty 'browser', "${browser}"
+    }
+}

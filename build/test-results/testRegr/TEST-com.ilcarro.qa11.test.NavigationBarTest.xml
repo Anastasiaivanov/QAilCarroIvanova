@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.ilcarro.qa11.test.NavigationBarTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2021-01-20T16:15:32" hostname="anastassmacbook.lan" time="0.218">
+  <properties/>
+  <testcase name="testSearch" classname="com.ilcarro.qa11.test.NavigationBarTest" time="0.218"/>
+  <system-out><![CDATA[17:15:32.409 [Test worker] INFO  com.ilcarro.qa11.test.TestBase - Start test testSearch with data: []
+17:15:32.411 [Test worker] INFO  com.ilcarro.qa11.test.TestBase - Start search By.cssSelector: a[href='/search']
+17:15:32.446 [Test worker] INFO  com.ilcarro.qa11.test.TestBase - By.cssSelector: a[href='/search']found.
+17:15:32.599 [Test worker] INFO  com.ilcarro.qa11.test.TestBase - Start search By.cssSelector: div[class='main-search__sidebar']
+17:15:32.625 [Test worker] INFO  com.ilcarro.qa11.test.TestBase - By.cssSelector: div[class='main-search__sidebar']found.
+17:15:32.629 [Test worker] INFO  com.ilcarro.qa11.test.TestBase - Passed: test method testSearch
+17:15:32.629 [Test worker] INFO  com.ilcarro.qa11.test.TestBase - ==============================
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

@@ -5,6 +5,8 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.safari.SafariDriver;
 import org.openqa.selenium.support.events.AbstractWebDriverEventListener;
 import org.openqa.selenium.support.events.EventFiringWebDriver;
 import org.slf4j.Logger;
@@ -64,6 +66,8 @@ public class ApplicationManager {
 
     public void init() {
         wd = new EventFiringWebDriver(new ChromeDriver());
+        //wd = new EventFiringWebDriver(new FirefoxDriver());
+        //wd = new EventFiringWebDriver(new SafariDriver());
         wd.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
         wd.manage().window().maximize();
         wd.get("https://ilcarro-dev-v1.firebaseapp.com/");
