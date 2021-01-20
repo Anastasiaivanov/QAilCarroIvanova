@@ -86,7 +86,7 @@ public class CreateAccountTest extends TestBase {
         //Assert.assertTrue(isElementPresent(By.cssSelector(".Login_login__right_block__1niYm")));
     }
 
-    @Test
+    @Test(enabled = false)
     public void testSignUpWithoutPassword() throws InterruptedException {
         //click on signUp button
         app.getHeader().openRegistrationFormFromHeader();

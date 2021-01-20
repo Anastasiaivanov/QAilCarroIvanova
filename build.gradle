@@ -15,8 +15,15 @@ dependencies {
     implementation 'ch.qos.logback:logback-classic:1.2.3'
 }
 
-task testNG(type:Test) {
-    useTestNG {
+task testRegr(type:Test) {
+    useTestNG()
+    if (project.hasProperty('browser')) {
+        systemProperty 'browser', "${browser}"
+    }
+}
+
+task userTest(type:Test) {
+    useTestNG{
         suites 'src/test/resources/testng-UserRegistration.xml'
     }
     if (project.hasProperty('browser')) {
