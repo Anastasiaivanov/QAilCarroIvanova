@@ -14,9 +14,8 @@ public class RestAssured {
     public void postRequestTest() {
         RequestSpecification httpRequest = io.restassured.RestAssured.given();
 
-        Response response = httpRequest.given()
-                .header("Content-Type", "application/json")// или .contentType(ContentType.JSON)
-                .given().header("Authorization", "UnVzYWxkb0BnbWFpbC5jb206UXdlcnR5MTIzNDU2")
+        Response response = httpRequest.given().contentType(ContentType.JSON)
+                .given().header("Authorization", "UnVzYWxkb1JAZ21haWwuY29tOlF3ZXJ0eTEyMzQ1Ng==")
                 .body("{\n" +
                         "  \"first_name\": \"Rusaldo\",\n" +
                         "  \"second_name\": \"Russ\"\n" +
@@ -36,7 +35,7 @@ public class RestAssured {
         RequestSpecification httpRequest = io.restassured.RestAssured.given();
 
         Response response = httpRequest.given().contentType(ContentType.JSON)
-                .given().header("Authorization", "UnVzYWxkb0BnbWFpbC5jb206UXdlcnR5MTIzNDU2")
+                .given().header("Authorization", "UnVzYWxkb1JAZ21haWwuY29tOlF3ZXJ0eTEyMzQ1Ng==")
                 .request().get("https://java-3-ilcarro-team-b.herokuapp.com/user/login");
 
         String responseBody = response.getBody().asString();
@@ -47,7 +46,6 @@ public class RestAssured {
         Assert.assertEquals(statusCode, 200, "BUG: status code is different");
         JsonElement parsed = new JsonParser().parse(responseBody);
         String first_name = parsed.getAsJsonObject().get("first_name").toString();
-        //String own_cars = parsed.getAsJsonObject().get("own_cars").toString();
         System.out.println(first_name);
         Assert.assertEquals(first_name, "\"Rusaldo\"", "BUG: the name is displayed doesn't equal expected name");
     }
@@ -56,7 +54,7 @@ public class RestAssured {
     public void putUpdateUser() {
         RequestSpecification httpRequest = io.restassured.RestAssured.given();
         Response response = httpRequest.given().contentType(ContentType.JSON)
-                .given().header("Authorization", "UnVzYWxkb0BnbWFpbC5jb206UXdlcnR5MTIzNDU2")
+                .given().header("Authorization", "UnVzYWxkb1JAZ21haWwuY29tOlF3ZXJ0eTEyMzQ1Ng==")
                 .body("{\n" +
                         "  \"first_name\": \"Rusal\",\n" +
                         "  \"photo\": \"string\",\n" +
@@ -76,13 +74,11 @@ public class RestAssured {
         RequestSpecification httpRequest = io.restassured.RestAssured.given();
 
         Response response = httpRequest.given()
-                .header("Authorization", "UnVzYWxkb0BnbWFpbC5jb206UXdlcnR5MTIzNDU2")
+                .header("Authorization", "UnVzYWxkb1JAZ21haWwuY29tOlF3ZXJ0eTEyMzQ1Ng==")
                 .delete("https://java-3-ilcarro-team-b.herokuapp.com/user");
 
         int statusCode = response.getStatusCode();
         System.out.println("Actual status code is " + statusCode);
         Assert.assertEquals(statusCode, 200, "BUG: user isn't deleted");
-
-
     }
 }
