@@ -35,6 +35,5 @@ public class CarHelper extends HelperBase{
         type(By.cssSelector("[name='about']"), car.getAbout());
         type(By.cssSelector(".type_feature"), car.getFeatures());
         type(By.cssSelector(".price"), String.valueOf(car.getPricePerDay()));
-
     }
 }

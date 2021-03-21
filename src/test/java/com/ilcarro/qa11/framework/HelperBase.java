@@ -3,8 +3,12 @@ package com.ilcarro.qa11.framework;
 import com.google.common.io.Files;
 import org.openqa.selenium.*;
 
+import javax.net.ssl.HttpsURLConnection;
 import java.io.File;
 import java.io.IOException;
+import java.net.URL;
+import java.util.Iterator;
+import java.util.List;
 import java.util.NoSuchElementException;
 
 public class HelperBase {
@@ -57,9 +61,47 @@ public class HelperBase {
 
         try {
             Files.copy(tmp, screenshot);
-        }catch (IOException e){
+        } catch (IOException e) {
             e.printStackTrace();
         }
         return screenshot.getAbsolutePath();
+    }
+
+    public String getAllLinksFromHomePage() {
+        List<WebElement> allLinks = wd.findElements(By.tagName("a"));
+        String url = "";
+        System.out.println("There are " + allLinks.size() + " links on the page");
+        Iterator<WebElement> iterator = allLinks.iterator();
+        while (iterator.hasNext()) {
+            url = iterator.next().getText();
+            System.out.println(url);
+        }
+        return url;
+    }
+
+    public void checkBrokenLinksOnHomePage() {
+        List<WebElement> allLinks = wd.findElements(By.tagName("a"));
+        for (int i = 0; i < allLinks.size(); i++) {
+            WebElement element = allLinks.get(i);
+            String url = element.getAttribute("href");
+            verifyLinks(url);
+        }
+    }
+
+    public void verifyLinks(String link) {
+        try {
+            URL url = new URL(link);
+            HttpsURLConnection httpsUrlConnect = (HttpsURLConnection) url.openConnection();
+            httpsUrlConnect.setConnectTimeout(5000);
+            httpsUrlConnect.connect();
+            if (httpsUrlConnect.getResponseCode() >= 400) {
+                System.out.println(link + " - " + httpsUrlConnect.getResponseMessage() + " is a broken link");
+            } else {
+                System.out.println(link + " - " + httpsUrlConnect.getResponseMessage());
+            }
+
+        } catch (Exception e) {
+            System.out.println(link + " - " + e.getMessage() + " is a broken link");
+        }
     }
 }

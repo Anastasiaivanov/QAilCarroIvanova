@@ -44,6 +44,7 @@ public class UserHelper extends HelperBase {
     }
 
     public void selectPolicyCheckBox() {
+
         click(By.cssSelector("#check_policy"));
     }
 }
