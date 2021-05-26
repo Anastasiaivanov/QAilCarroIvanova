@@ -13,6 +13,9 @@ dependencies {
     implementation 'org.seleniumhq.selenium:selenium-java:3.141.59'
     implementation 'org.testng:testng:7.1.0'
     implementation 'ch.qos.logback:logback-classic:1.2.3'
+    implementation 'io.rest-assured:rest-assured:4.3.3'
+    implementation 'org.json:json:20201115'
+    implementation 'com.google.code.gson:gson:2.8.6'
 }
 
 task testRegr(type:Test) {
