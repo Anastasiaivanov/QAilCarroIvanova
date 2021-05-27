@@ -10,6 +10,8 @@ The test package consist of
   
 - Rest assured tests
 
+- saving logs to a new file each time while running the test script
+
 Technology Used : Java, TestNG, Selenium, Gradle
  
 
